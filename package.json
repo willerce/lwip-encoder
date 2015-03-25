@@ -6,13 +6,15 @@
     "nan": "~1.4.1",
     "node-pre-gyp": "0.6.4"
   },
-  "bundledDependencies":["node-pre-gyp"],
+  "bundledDependencies": [
+    "node-pre-gyp"
+  ],
   "binary": {
-    "module_name" : "lwip_encoder",
-    "module_path" : "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
-    "remote_path" : "./lwip/{module_name}/v{version}/{configuration}/",
+    "module_name": "lwip_encoder",
+    "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
+    "remote_path": "./{module_name}/v{version}/{configuration}/",
     "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz",
-    "host"        : "https://mthost.org"
+    "host": "https://lwip.s3.amazonaws.com"
   },
   "scripts": {
     "install": "node-pre-gyp install --fallback-to-build",
@@ -27,12 +29,7 @@
     "example": "examples"
   },
   "devDependencies": {
-    "coveralls": "^2.11.2",
-    "istanbul": "^0.3.5",
-    "mkdirp": "^0.5.0",
-    "mocha": "^2.1.0",
-    "mocha-lcov-reporter": "0.0.1",
-    "should": "^4.4.1"
+    "aws-sdk": "^2.1.19"
   },
   "repository": {
     "type": "git",

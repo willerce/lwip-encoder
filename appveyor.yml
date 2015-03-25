@@ -1,8 +1,8 @@
 environment:
   node_pre_gyp_accessKeyId:
-    secure: 7DrSVc5eIGtmMcki5H+iRft+Tk3MJTwDBQEUuJHWaQ4=
+    secure: zjvjk+WdskG5bYwvg8Jr+Nq/eVdl4+TiMVy79rmkr10=
   node_pre_gyp_secretAccessKey:
-    secure: 1amwJJw9fu0j6dXnc5KsAQbSYf7Cjw/dapT6OZWABa6nc52grkKeLQ+DGaOfQz8i
+    secure: qzwDoxlmWxN48tsnuqEE67obgZjnNbZFR1wLR4CWvOmqg+wFRZVTRPAx5qleQxcS
   matrix:
     - nodejs_version: 0.10.36
       platform: x86
@@ -72,10 +72,11 @@ install:
   - dumpbin /DEPENDENTS "%MODULE%" || true
   - npm test || true
   - node-pre-gyp package %BUILD_ARGS%
+  # publish
+  - node-pre-gyp package publish
   # make commit message env var shorter
   - SET CM=%APPVEYOR_REPO_COMMIT_MESSAGE%
   - if not "%CM%" == "%CM:[publish binary]=%" node-pre-gyp --msvs_version=2013 publish %BUILD_ARGS%
-  - if "%msvs_toolset%" == "12" call scripts\build_for_node_webkit.cmd %platform%
 
 build: OFF
 test: OFF
