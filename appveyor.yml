@@ -4,33 +4,30 @@ environment:
   node_pre_gyp_secretAccessKey:
     secure: qzwDoxlmWxN48tsnuqEE67obgZjnNbZFR1wLR4CWvOmqg+wFRZVTRPAx5qleQxcS
   matrix:
-    - nodejs_version: 0.10.36
+    - nodejs_version: 0.10.38
       platform: x86
       msvs_toolset: 12
-    - nodejs_version: 0.10.36
+    - nodejs_version: 0.10.38
       platform: x64
       msvs_toolset: 12
-    - nodejs_version: 0.12.0
+    - nodejs_version: 0.11.16
       platform: x86
       msvs_toolset: 12
-    - nodejs_version: 0.12.0
+    - nodejs_version: 0.11.16
       platform: x64
       msvs_toolset: 12
-    - nodejs_version: 1.1.0
+    - nodejs_version: 0.12.1
       platform: x86
       msvs_toolset: 12
-    - nodejs_version: 1.1.0
+    - nodejs_version: 0.12.1
       platform: x64
       msvs_toolset: 12
-    # custom visual studio 2014 builds
-    - nodejs_version: 0.10.33
+    - nodejs_version: 1.6.0
       platform: x86
-      msvs_toolset: 14
-      BUILD_ARGS: --dist-url=https://s3.amazonaws.com/mapbox/node-cpp11 --toolset=v140
-    - nodejs_version: 0.10.33
+      msvs_toolset: 12
+    - nodejs_version: 1.6.0
       platform: x64
-      msvs_toolset: 14
-      BUILD_ARGS: --dist-url=https://s3.amazonaws.com/mapbox/node-cpp11 --toolset=v140
+      msvs_toolset: 12
 
 os: Visual Studio 2014 CTP4
 
@@ -72,8 +69,6 @@ install:
   - dumpbin /DEPENDENTS "%MODULE%" || true
   - npm test || true
   - node-pre-gyp package %BUILD_ARGS%
-  # publish
-  - node-pre-gyp package publish
   # make commit message env var shorter
   - SET CM=%APPVEYOR_REPO_COMMIT_MESSAGE%
   - if not "%CM%" == "%CM:[publish binary]=%" node-pre-gyp --msvs_version=2013 publish %BUILD_ARGS%
