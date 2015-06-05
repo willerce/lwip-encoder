@@ -13,7 +13,7 @@
     "module_name": "lwip_encoder",
     "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
     "remote_path": "./",
-    "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz",
+    "package_name": "{module_name}-{node_abi}-{platform}-{arch}.tar.gz",
     "host": "https://dn-lwip.qbox.me"
   },
   "scripts": {
